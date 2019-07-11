@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php if (is_user_logged_in()) { ?>
 <?php the_post(); ?>
 <div class="ccc-screen-container">
     <button class="btn btn-md btn-success btn-print">Imprimir Presupuesto</button>
@@ -142,5 +143,5 @@
         </div>
     </div>
 </div>
-
+<?php } ?>
 <?php get_footer(); ?>
