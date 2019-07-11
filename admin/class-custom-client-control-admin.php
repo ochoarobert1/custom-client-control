@@ -309,19 +309,23 @@ class Custom_Client_Control_Admin {
     public function custom_metabox_callback($post) {
         wp_nonce_field( 'custom_nonce_action', 'custom_nonce' );
         $value = get_post_meta( $post->ID, 'elementos', true );
+        $currency = get_post_meta( $post->ID, 'currency', true );
+        $precio_bolivares = get_post_meta( $post->ID, 'precio_bolivares', true );
+        $precio_dolares = get_post_meta( $post->ID, 'precio_dolares', true );
+        $tiempo_entrega = get_post_meta( $post->ID, 'tiempo_entrega', true );
 ?>
 <div class="currency-container">
     <h3><?php _e('Seleccione Moneda'); ?></h3>
     <label for="currency">
-        <input type="radio" name="currency" value="0" class="thinfat" />
+        <input type="radio" name="currency" value="0" class="thinfat" <?php if ($currency == '0') { echo 'checked="checked"'; } ?> />
         <?php _e('Bolívares'); ?>
     </label>
     <label for="currency">
-        <input type="radio" name="currency" value="1" class="thinfat" />
+        <input type="radio" name="currency" value="1" class="thinfat" <?php if ($currency == '1') { echo 'checked="checked"'; } ?> />
         <?php _e('Dólares'); ?>
     </label>
     <label for="currency">
-        <input type="radio" name="currency" value="2" class="thinfat" />
+        <input type="radio" name="currency" value="2" class="thinfat" <?php if ($currency == '2') { echo 'checked="checked"'; } ?> />
         <?php _e('Ambos'); ?>
     </label>
 
@@ -345,12 +349,12 @@ class Custom_Client_Control_Admin {
 <hr>
 <div class="price-container">
     <h3><?php _e('Agregue Precios'); ?></h3>
-    <input type="number" min="1" step="any"  name="precio_bolivares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Bolívares', 'custom-client-control'); ?>" />
-    <input type="number" min="1" step="any"  name="precio_dolares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Dólares', 'custom-client-control'); ?>" />
+    <input type="number" min="1" step="any" name="precio_bolivares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Bolívares', 'custom-client-control'); ?>" value="<?php echo $precio_bolivares; ?>" />
+    <input type="number" min="1" step="any" name="precio_dolares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Dólares', 'custom-client-control'); ?>" value="<?php echo $precio_dolares; ?>" />
 </div>
 <div class="time-container">
-   <h3><?php _e('Agregue Tiempos'); ?></h3>
-    <input type="text" name="tiempo_entrega" class="widefat" value="" placeholder="<?php _e('Agregue aqui el tiempo de entrega', 'custom-client-control'); ?>" />
+    <h3><?php _e('Agregue Tiempos'); ?></h3>
+    <input type="text" name="tiempo_entrega" class="widefat" placeholder="<?php _e('Agregue aqui el tiempo de entrega', 'custom-client-control'); ?>" value="<?php echo $tiempo_entrega; ?>" />
 </div>
 <?php
 

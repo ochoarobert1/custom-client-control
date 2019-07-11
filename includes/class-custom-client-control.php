@@ -180,6 +180,8 @@ class Custom_Client_Control {
 
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
         $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+        $this->loader->add_filter( 'single_template', $plugin_public, 'load_cpt_template' );
+
 
     }
 

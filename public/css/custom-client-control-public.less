@@ -1,0 +1,392 @@
+/**
+* All of the CSS for your public-facing functionality should be
+* included in this file.
+*/
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap');
+@red: #DF0209;
+
+.single-ccc_presupuestos {
+    background-color: #FFF;
+    font-family: 'Ubuntu', sans-serif;
+
+    & .ccc-screen-container {
+        display: none;
+    }
+
+    & header,
+    footer,
+    aside,
+    nav,
+    form,
+    iframe,
+    button,
+    .menu,
+    .hero,
+    .adslot {
+        display: none;
+    }
+
+    & .ccc-main-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    & .ccc-first-page {
+        background: black;
+        color: white;
+        height: 100%;
+        width: 100%;
+        display: table;
+
+        & .page-middle-inner {
+            height: 100%;
+            width: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+
+    & .img-center {
+        display: block;
+        margin: 0 auto;
+    }
+
+    & .img-logo {
+        margin-bottom: 4.5rem;
+    }
+
+    & .main-title {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+
+        & h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: @red;
+        }
+
+        & h5 {
+            margin-top: 1rem;
+            font-size: 2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+    }
+
+
+}
+
+@page {
+    margin: 3em 3em;
+}
+
+@page :first {
+    margin: 0;
+}
+
+.section-0 {
+    width: 89%;
+    text-align: right;
+    vertical-align: middle;
+    margin-bottom: 1em;
+
+    & img {
+        display: inline-block;
+        max-width: 60px;
+        margin-left: 10px;
+    }
+
+    & p {
+        font-size: 1.1em;
+
+        & strong {
+            color: @red;
+        }
+    }
+}
+
+.ccc-second-page {
+    & .section-1 {
+        display: table;
+        width: 89%;
+        background: #EDEFF1;
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+
+        & div {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0 auto;
+
+            & img {
+                margin: 0 auto;
+                display: block;
+            }
+
+            & p {
+                width: 98%;
+                padding: 0 2em;
+                font-size: 1.4rem;
+                margin: 0 auto;
+                display: block;
+                text-align: center;
+                line-height: 1.5em;
+            }
+        }
+    }
+
+    & .section-2 {
+        display: table;
+        width: 89%;
+        margin-bottom: 2rem;
+
+        & div {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0 auto;
+
+            &:last-child {
+                padding: 1.5rem;
+                background: #EDEFF1;
+                border-radius: 15px;
+            }
+
+            & img {
+                margin: 0 auto;
+                display: block;
+                padding-right: 30px;
+            }
+
+            & h2 {
+                color: @red;
+            }
+
+            & p {
+                width: 98%;
+                font-size: 1.2rem;
+                text-align: justify;
+                line-height: 2em;
+            }
+        }
+    }
+
+    & .section-3,
+    .section-5 {
+        width: 89%;
+        margin-bottom: 2.5rem;
+
+        & p {
+            width: 98%;
+            font-size: 1.4rem;
+            text-align: justify;
+            line-height: 1.8em;
+        }
+    }
+
+    & .section-4 {
+        width: 89%;
+        border: 2px solid @red;
+        border-radius: 15px;
+        margin-bottom: 2em;
+        padding: 2em 4em;
+
+        & h2 {
+            width: 98%;
+            font-size: 2.2em;
+            text-align: center;
+            line-height: 1.4em;
+        }
+    }
+
+    & .section-6 {
+        display: table;
+        width: 89%;
+        margin-bottom: 2rem;
+
+        & div {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0 auto;
+
+            &:last-child {
+                padding: 1.5rem;
+                background: @red;
+                color: white;
+                border-radius: 15px;
+            }
+
+            & img {
+                margin: 0 auto;
+                display: block;
+                padding-right: 30px;
+            }
+
+            & p {
+                width: 98%;
+                padding: 0 2em;
+                font-size: 1.7rem;
+                margin: 0 auto;
+                display: block;
+                text-align: center;
+                line-height: 1.5em;
+            }
+        }
+    }
+}
+
+.ccc-third-page {
+    & .section-1 {
+        width: 89%;
+        font-size: 1.4em;
+        line-height: 1.5em;
+        margin-bottom: 2em;
+
+        & h2 {
+            margin-bottom: 2.5rem;
+
+            & strong {
+                color: @red;
+            }
+        }
+    }
+
+    & .section-2 {
+        display: table;
+        width: 89%;
+        margin-bottom: 2rem;
+
+        & div {
+            display: table-cell;
+            vertical-align: middle;
+            margin: 0 auto;
+            padding-right: 30px;
+
+            & img {
+                margin: 0 auto;
+                display: block;
+                padding-right: 30px;
+            }
+
+            & h2 {
+                & strong {
+                    color: @red;
+                }
+            }
+
+            & p {
+                width: 98%;
+                font-size: 1.4rem;
+                text-align: justify;
+                line-height: 2em;
+            }
+        }
+    }
+
+    & .section-3 {
+        width: 89%;
+        border: 2px solid @red;
+        border-radius: 15px;
+        margin-bottom: 2em;
+        padding: 2em;
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+
+        & h2 {
+            margin-bottom: 2.5rem;
+        }
+
+        & h4 {
+            margin-top: 2.5rem;
+            font-size: 1.7rem;
+            font-weight: 400;
+            text-align: center;
+            line-height: 2.2rem;
+
+            & strong {
+                color: @red;
+            }
+        }
+    }
+}
+
+.ccc-fourth-page {
+    .section-1 {
+        width: 89%;
+        font-size: 1.4em;
+        line-height: 1.5em;
+        margin-bottom: 2em;
+
+        & h2 {
+            margin-bottom: 2.5rem;
+
+            & strong {
+                color: @red;
+            }
+        }
+
+        & h4 {
+            color: @red;
+            font-style: italic;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        & div {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        & table {
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid black;
+
+            & tr {
+                border: 1px solid black;
+
+                &:last-child {
+                    & td {
+                        text-align: left;
+                    }
+                }
+            }
+
+            & th {
+                padding: .5em;
+                background: @red;
+                color: white;
+                text-align: center;
+            }
+
+            & td {
+                padding: .5em;
+                text-align: center;
+                border: 1px solid black;
+            }
+        }
+    }
+}
+
+.ccc-fifth-page {
+    & .section-1 {
+        width: 89%;
+        font-size: 1.4em;
+        line-height: 1.7em;
+        margin-bottom: 2em;
+        text-align: justify;
+
+        & h2 {
+            margin-bottom: 2.5rem;
+
+            & strong {
+                color: @red;
+            }
+        }
+
+    }
+}
