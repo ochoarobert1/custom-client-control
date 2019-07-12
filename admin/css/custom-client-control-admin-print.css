@@ -4,32 +4,32 @@
 * included in this file.
 */
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap');
-header,
-footer,
-aside,
-nav,
-form,
-iframe,
-button,
-.menu,
-.hero,
-.adslot,
-.grecaptcha-badge,
-.adsbygoogle {
-  display: none !important;
+#wpwrap {
+  display: none;
 }
-#printArea {
+body {
   width: 100%;
   height: 100%;
+  background-color: #FFF;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem !important;
+  line-height: normal !important;
+}
+@page {
+  margin: 3em 3em;
+}
+@page :first {
+  background: black !important;
+  margin: .1em !important;
+}
+#printArea {
   display: block !important;
+  width: 100%;
+  height: 100%;
   background-color: #FFF;
   font-family: 'Ubuntu', sans-serif;
 }
-#printArea .ccc-screen-container {
-  display: none;
-}
 #printArea .ccc-main-container {
-  display: block;
   width: 100%;
   height: 100%;
 }
@@ -38,13 +38,17 @@ button,
   color: white;
   height: 100%;
   width: 100%;
-  display: table;
+  display: table !important;
+  overflow: hidden;
 }
 #printArea .ccc-first-page .page-middle-inner {
+  background: black;
+  color: white;
   height: 100%;
   width: 100%;
   display: table-cell;
   vertical-align: middle;
+  margin-top: -35px;
 }
 #printArea .img-center {
   display: block;
@@ -73,7 +77,7 @@ button,
 }
 #printArea .section-0 {
   display: block;
-  width: 89%;
+  width: 82%;
   text-align: right;
   vertical-align: middle;
   margin-bottom: 1em;
@@ -84,7 +88,7 @@ button,
   margin-left: 10px;
 }
 #printArea .section-0 p {
-  font-size: 1.1em;
+  font-size: .9em;
 }
 #printArea .section-0 p strong {
   color: #df0209;
@@ -93,6 +97,9 @@ button,
   max-width: 50px;
   display: inline-block;
   padding-right: 10px;
+}
+#printArea .ccc-second-page {
+  display: block;
 }
 #printArea .ccc-second-page .section-1 {
   display: table;
@@ -204,6 +211,9 @@ button,
   text-align: center;
   line-height: 1.5em;
 }
+#printArea .ccc-third-page {
+  display: block;
+}
 #printArea .ccc-third-page .section-1 {
   width: 89%;
   font-size: 1.4em;
@@ -266,6 +276,9 @@ button,
 #printArea .ccc-third-page .section-3 h4 strong {
   color: #df0209;
 }
+#printArea .ccc-fourth-page {
+  display: block;
+}
 #printArea .ccc-fourth-page .section-1 {
   width: 89%;
   font-size: 1.4em;
@@ -313,6 +326,9 @@ button,
   text-align: center;
   border: 1px solid black;
 }
+#printArea .ccc-fifth-page {
+  display: block;
+}
 #printArea .ccc-fifth-page .section-1 {
   width: 89%;
   font-size: 1.4em;
@@ -325,10 +341,4 @@ button,
 }
 #printArea .ccc-fifth-page .section-1 h2 strong {
   color: #df0209;
-}
-@page {
-  margin: 3em 3em;
-}
-@page :first {
-  margin: 0;
 }

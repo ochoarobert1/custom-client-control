@@ -5,34 +5,37 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap');
 @red: #DF0209;
 
-header,
-footer,
-aside,
-nav,
-form,
-iframe,
-button,
-.menu,
-.hero,
-.adslot,
-.grecaptcha-badge,
-.adsbygoogle {
-    display: none !important;
+#wpwrap {
+    display: none;
 }
 
-#printArea {
+body {
     width: 100%;
     height: 100%;
+    background-color: #FFF;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem !important;
+    line-height: normal !important;
+}
+
+@page {
+    margin: 3em 3em;
+}
+
+@page:first {
+    background: black !important;
+    margin: .1em !important;
+}
+
+
+#printArea {
     display: block !important;
+    width: 100%;
+    height: 100%;
     background-color: #FFF;
     font-family: 'Ubuntu', sans-serif;
 
-    & .ccc-screen-container {
-        display: none;
-    }
-
     & .ccc-main-container {
-        display: block;
         width: 100%;
         height: 100%;
     }
@@ -42,13 +45,18 @@ button,
         color: white;
         height: 100%;
         width: 100%;
-        display: table;
+        display: table !important;
+        overflow: hidden;
+
 
         & .page-middle-inner {
+            background: black;
+            color: white;
             height: 100%;
             width: 100%;
             display: table-cell;
             vertical-align: middle;
+            margin-top: -35px;
         }
     }
 
@@ -84,7 +92,7 @@ button,
 
     & .section-0 {
         display: block;
-        width: 89%;
+        width: 82%;
         text-align: right;
         vertical-align: middle;
         margin-bottom: 1em;
@@ -96,7 +104,7 @@ button,
         }
 
         & p {
-            font-size: 1.1em;
+            font-size: .9em;
 
             & strong {
                 color: @red;
@@ -104,13 +112,15 @@ button,
         }
     }
 
-    & .img-inline {
+    .img-inline {
         max-width: 50px;
         display: inline-block;
         padding-right: 10px;
     }
 
-    & .ccc-second-page {
+    .ccc-second-page {
+        display: block;
+
         & .section-1 {
             display: table;
             width: 89%;
@@ -240,7 +250,9 @@ button,
         }
     }
 
-    & .ccc-third-page {
+    .ccc-third-page {
+        display: block;
+
         & .section-1 {
             width: 89%;
             font-size: 1.4em;
@@ -319,8 +331,10 @@ button,
         }
     }
 
-    & .ccc-fourth-page {
-        & .section-1 {
+    .ccc-fourth-page {
+        display: block;
+
+        .section-1 {
             width: 89%;
             font-size: 1.4em;
             line-height: 1.5em;
@@ -380,7 +394,9 @@ button,
         }
     }
 
-    & .ccc-fifth-page {
+    .ccc-fifth-page {
+        display: block;
+
         & .section-1 {
             width: 89%;
             font-size: 1.4em;
@@ -398,14 +414,6 @@ button,
 
         }
     }
-
-
 }
 
-@page {
-    margin: 3em 3em;
-}
 
-@page :first {
-    margin: 0;
-}

@@ -35,10 +35,32 @@
             e.preventDefault();
             jQuery('.element-container').append('<div class="element-item"><input type="text" name="ccc_elementos[]" class="widefat" value="" placeholder="Agregue aqui el elemento" /></div>');
         });
-        
+
         jQuery('#button_cloner_offers').on('click touchstart', function (e) {
             e.preventDefault();
             jQuery('.offerings-container').append('<div class="element-item"><input type="text" name="ccc_offers[]" class="widefat" value="" placeholder="Agregue aqui el elemento" /></div>');
+        });
+
+        jQuery('#print_budget').on('click touchstart', function (e) {
+            e.preventDefault();
+            jQuery.ajax({
+                type: 'POST',
+                url: admin_url.ajax_url,
+                data: {
+                    action: 'print_custom_budget',
+                    post_id: jQuery('input[name=post_hidden_ID').val()
+                },
+                success: function (response) {
+                    jQuery('.wp-admin').append(response);
+                    window.print();
+                    return false; // why false?
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                }
+            });
         });
 
     });

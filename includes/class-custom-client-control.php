@@ -154,7 +154,7 @@ class Custom_Client_Control {
 
         $plugin_admin = new Custom_Client_Control_Admin( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+        $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles', 99 );
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_admin_menu' );
@@ -164,6 +164,8 @@ class Custom_Client_Control {
         $this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'custom_register_meta_boxes' );
 
         $this->loader->add_action( 'save_post', $plugin_admin, 'custom_save_meta_box' );
+
+        $this->loader->add_action( 'wp_ajax_print_custom_budget', $plugin_admin, 'print_custom_budget_callback' );
 
     }
 
@@ -178,8 +180,8 @@ class Custom_Client_Control {
 
         $plugin_public = new Custom_Client_Control_Public( $this->get_plugin_name(), $this->get_version() );
 
-        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles', 99 );
+        $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts', 99 );
         $this->loader->add_filter( 'single_template', $plugin_public, 'load_cpt_template' );
 
 
