@@ -59,9 +59,9 @@
         </div>
         <div class="section-1">
             <h2><strong>Datos</strong> del Proyecto</h2>
-            <div>icono <strong>Nombre del Cliente:</strong> </div>
-            <div>icono <strong>Tipo de Proyecto:</strong> <?php the_title(); ?></div>
-            <div>icono <strong>Fecha del Presupuesto:</strong> <?php echo date('d-m-Y'); ?></div>
+            <div><img src="<?php echo plugins_url('/icon-avatar.png', __FILE__); ?>" alt="" class="img-inline" /> <strong>Nombre del Cliente:</strong> <?php echo get_post_meta(get_the_ID(), 'ccc_nombre_cliente', true); ?></div>
+            <div><img src="<?php echo plugins_url('/icon-data.png', __FILE__); ?>" alt="" class="img-inline" /> <strong>Tipo de Proyecto:</strong> <?php the_title(); ?></div>
+            <div><img src="<?php echo plugins_url('/icon-calendar.png', __FILE__); ?>" alt="" class="img-inline" /> <strong>Fecha del Presupuesto:</strong> <?php echo date('d-m-Y'); ?></div>
         </div>
         <div class="section-2">
             <div>
@@ -75,7 +75,7 @@
         </div>
         <div class="section-3">
             <h2>Te ofrezco lo siguiente:</h2>
-            <?php $elementos = get_post_meta(get_the_ID(), 'elementos', true); ?>
+            <?php $elementos = get_post_meta(get_the_ID(), 'ccc_offers', true); ?>
             <ul>
                 <?php foreach ($elementos as $item) { ?>
                 <li><?php echo $item; ?></li>
@@ -92,7 +92,7 @@
         </div>
         <div class="section-1">
             <h2><strong>Costo</strong> del Proyecto</h2>
-            <?php $currency = get_post_meta(get_the_ID(), 'currency', true); ?>
+            <?php $currency = get_post_meta(get_the_ID(), 'ccc_currency', true); ?>
             <?php if ($currency != 2) { ?>
             <?php if ($currency === 0) { $currency_text = 'Bolívares.'; $currency_symbol = 'Bs.'; } else { $currency_text = 'Dólares.'; $currency_symbol = '$'; }?>
             <h4>(Valuado en <?php echo $currency_text; ?>)</h4>
@@ -104,7 +104,7 @@
                         <th>Costo</th>
                     </tr>
 
-                    <?php $elementos = get_post_meta(get_the_ID(), 'elementos', true); ?>
+                    <?php $elementos = get_post_meta(get_the_ID(), 'ccc_elementos', true); ?>
                     <?php $i = 1; ?>
                     <?php foreach ($elementos as $item) { ?>
                     <tr>
@@ -115,7 +115,58 @@
                     <?php $i++; } ?>
                     <tr>
                         <td colspan=2>TOTAL</td>
-                        <td><?php echo $currency_symbol; ?> <?php echo number_format(get_post_meta(get_the_ID(), 'precio_dolares', true), 2, ',', '.' ); ?></td>
+                        <td><?php echo $currency_symbol; ?> <?php echo number_format(get_post_meta(get_the_ID(), 'ccc_precio_dolares', true), 2, ',', '.' ); ?></td>
+                    </tr>
+                </table>
+            </div>
+            <?php } else { ?>
+            <?php $currency_text = 'Bolívares.'; $currency_symbol = 'Bs.'; ?>
+            <h4>(Valuado en <?php echo $currency_text; ?>)</h4>
+            <div>
+                <table>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>Descripción</th>
+                        <th>Costo</th>
+                    </tr>
+
+                    <?php $elementos = get_post_meta(get_the_ID(), 'ccc_elementos', true); ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($elementos as $item) { ?>
+                    <tr>
+                        <td><?php echo $i; ?></td>
+                        <td><?php echo $item; ?></td>
+                        <td></td>
+                    </tr>
+                    <?php $i++; } ?>
+                    <tr>
+                        <td colspan=2>TOTAL</td>
+                        <td><?php echo $currency_symbol; ?> <?php echo number_format(get_post_meta(get_the_ID(), 'ccc_precio_bolivares', true), 2, ',', '.' ); ?></td>
+                    </tr>
+                </table>
+            </div>
+            <?php $currency_text = 'Dólares.'; $currency_symbol = '$ '; ?>
+            <h4>(Valuado en <?php echo $currency_text; ?>)</h4>
+            <div>
+                <table>
+                    <tr>
+                        <th>Etapa</th>
+                        <th>Descripción</th>
+                        <th>Costo</th>
+                    </tr>
+
+                    <?php $elementos = get_post_meta(get_the_ID(), 'ccc_elementos', true); ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($elementos as $item) { ?>
+                    <tr>
+                        <td><?php echo $i; ?></td>
+                        <td><?php echo $item; ?></td>
+                        <td></td>
+                    </tr>
+                    <?php $i++; } ?>
+                    <tr>
+                        <td colspan=2>TOTAL</td>
+                        <td><?php echo $currency_symbol; ?> <?php echo number_format(get_post_meta(get_the_ID(), 'ccc_precio_dolares', true), 2, ',', '.' ); ?></td>
                     </tr>
                 </table>
             </div>
@@ -130,7 +181,7 @@
         </div>
         <div class="section-1">
             <h2><strong>Condiciones</strong> del Proyecto</h2>
-            <p>El tiempo de entrega para el proyecto es de <strong><?php echo get_post_meta(get_the_ID(), 'tiempo_entrega', true); ?></strong>, y comienzan a contar desde la entrega de los accesos necesarios para llevar a cabo la propuesta, (en caso de tenerlos, hosting, ftp, entre otros) y demás información relevante.</p>
+            <p>El tiempo de entrega para el proyecto es de <strong><?php echo get_post_meta(get_the_ID(), 'ccc_tiempo_entrega', true); ?></strong>, y comienzan a contar desde la entrega de los accesos necesarios para llevar a cabo la propuesta, (en caso de tenerlos, hosting, ftp, entre otros) y demás información relevante.</p>
             <p>La información y los accesos deben ser enviados con la confirmación de la cancelación del 50% inicial y la firma de este documento en señal de aceptación de las condiciones.</p>
             <p>El pago (si es en Bolívares) se hará en dos (2) partes: 50% adelantado, con la entrega firmada de este documento en señal de aceptación formal de la propuesta y las condiciones que en él se establecen. El 50% restante se cancelara al momento de la entrega final.</p>
             <p>El Pago (si es en dólares) se hará al finalizar el proyecto. El cliente asumirá la comisión de PayPal.</p>

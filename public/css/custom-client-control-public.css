@@ -88,6 +88,11 @@
 .section-0 p strong {
   color: #df0209;
 }
+.img-inline {
+  max-width: 50px;
+  display: inline-block;
+  padding-right: 10px;
+}
 .ccc-second-page .section-1 {
   display: table;
   width: 89%;
@@ -204,6 +209,9 @@
   line-height: 1.5em;
   margin-bottom: 2em;
 }
+.ccc-third-page .section-1 div {
+  margin-bottom: .5em;
+}
 .ccc-third-page .section-1 h2 {
   margin-bottom: 2.5rem;
 }
@@ -284,6 +292,7 @@
   width: 100%;
   margin: 0 auto;
   border: 1px solid black;
+  margin-bottom: 2rem;
 }
 .ccc-fourth-page .section-1 table tr {
   border: 1px solid black;
@@ -298,6 +307,7 @@
   text-align: center;
 }
 .ccc-fourth-page .section-1 table td {
+  font-size: .9em;
   padding: .5em;
   text-align: center;
   border: 1px solid black;

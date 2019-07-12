@@ -108,6 +108,12 @@
     }
 }
 
+.img-inline {
+    max-width: 50px;
+    display: inline-block;
+    padding-right: 10px;
+}
+
 .ccc-second-page {
     & .section-1 {
         display: table;
@@ -244,6 +250,10 @@
         font-size: 1.4em;
         line-height: 1.5em;
         margin-bottom: 2em;
+        
+        & div {
+            margin-bottom: .5em;
+        }
 
         & h2 {
             margin-bottom: 2.5rem;
@@ -345,6 +355,7 @@
             width: 100%;
             margin: 0 auto;
             border: 1px solid black;
+            margin-bottom: 2rem;
 
             & tr {
                 border: 1px solid black;
@@ -364,6 +375,7 @@
             }
 
             & td {
+                font-size: .9em;
                 padding: .5em;
                 text-align: center;
                 border: 1px solid black;

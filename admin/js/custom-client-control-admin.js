@@ -33,7 +33,12 @@
 
         jQuery('#button_cloner').on('click touchstart', function (e) {
             e.preventDefault();
-            jQuery('.element-container').append('<div class="element-item"><input type="text" name="elemento[]" class="widefat" value="" placeholder="Agregue aqui el elemento" /></div>');
+            jQuery('.element-container').append('<div class="element-item"><input type="text" name="ccc_elementos[]" class="widefat" value="" placeholder="Agregue aqui el elemento" /></div>');
+        });
+        
+        jQuery('#button_cloner_offers').on('click touchstart', function (e) {
+            e.preventDefault();
+            jQuery('.offerings-container').append('<div class="element-item"><input type="text" name="ccc_offers[]" class="widefat" value="" placeholder="Agregue aqui el elemento" /></div>');
         });
 
     });

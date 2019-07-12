@@ -307,40 +307,62 @@ class Custom_Client_Control_Admin {
     }
 
     public function custom_metabox_callback($post) {
-        wp_nonce_field( 'custom_nonce_action', 'custom_nonce' );
-        $value = get_post_meta( $post->ID, 'elementos', true );
-        $currency = get_post_meta( $post->ID, 'currency', true );
-        $precio_bolivares = get_post_meta( $post->ID, 'precio_bolivares', true );
-        $precio_dolares = get_post_meta( $post->ID, 'precio_dolares', true );
-        $tiempo_entrega = get_post_meta( $post->ID, 'tiempo_entrega', true );
+        wp_nonce_field( 'ccc_presupuestos_nonce_action', 'ccc_presupuestos_nonce' );
+        $nombre_cliente = get_post_meta( $post->ID, 'ccc_nombre_cliente', true );
+        $offers = get_post_meta( $post->ID, 'ccc_offers', true );
+        $currency = get_post_meta( $post->ID, 'ccc_currency', true );
+        $elementos = get_post_meta( $post->ID, 'ccc_elementos', true );
+        $precio_bolivares = get_post_meta( $post->ID, 'ccc_precio_bolivares', true );
+        $precio_dolares = get_post_meta( $post->ID, 'ccc_precio_dolares', true );
+        $tiempo_entrega = get_post_meta( $post->ID, 'ccc_tiempo_entrega', true );
 ?>
+<div class="client-container">
+    <h3><?php _e('Nombre del Cliente'); ?></h3>
+    <input type="text" name="ccc_nombre_cliente" class="widefat" placeholder="<?php _e('Agregue aquí el nombre del cliente', 'custom-client-control'); ?>" value="<?php echo $nombre_cliente; ?>" />
+</div>
+<hr>
 <div class="currency-container">
-    <h3><?php _e('Seleccione Moneda'); ?></h3>
+    <h3><?php _e('Moneda'); ?></h3>
     <label for="currency">
-        <input type="radio" name="currency" value="0" class="thinfat" <?php if ($currency == '0') { echo 'checked="checked"'; } ?> />
+        <input type="radio" name="ccc_currency" value="0" class="thinfat" <?php if ($currency == '0') { echo 'checked="checked"'; } ?> />
         <?php _e('Bolívares'); ?>
     </label>
     <label for="currency">
-        <input type="radio" name="currency" value="1" class="thinfat" <?php if ($currency == '1') { echo 'checked="checked"'; } ?> />
+        <input type="radio" name="ccc_currency" value="1" class="thinfat" <?php if ($currency == '1') { echo 'checked="checked"'; } ?> />
         <?php _e('Dólares'); ?>
     </label>
     <label for="currency">
-        <input type="radio" name="currency" value="2" class="thinfat" <?php if ($currency == '2') { echo 'checked="checked"'; } ?> />
+        <input type="radio" name="ccc_currency" value="2" class="thinfat" <?php if ($currency == '2') { echo 'checked="checked"'; } ?> />
         <?php _e('Ambos'); ?>
     </label>
-
 </div>
 <hr>
-<div class="element-container">
-    <h3><?php _e('Agregue Elementos'); ?></h3>
-    <?php if ($value == NULL) { ?>
+<div class="offerings-container">
+    <h3><?php _e('Elementos a Ofrecer'); ?></h3>
+    <?php if ($offers == NULL) { ?>
     <div class="element-item">
-        <input type="text" name="elemento[]" class="widefat" value="" placeholder="<?php _e('Agregue aqui el elemento', 'custom-client-control'); ?>" />
+        <input type="text" name="ccc_offers[]" class="widefat" value="" placeholder="<?php _e('Agregue aqui el elemento', 'custom-client-control'); ?>" />
     </div>
     <?php } else {  ?>
-    <?php foreach ($value as $item) { ?>
+    <?php foreach ($offers as $item) { ?>
     <div class="element-item">
-        <input type="text" name="elemento[]" class="widefat" placeholder="<?php _e('Agregue aqui el elemento', 'custom-client-control'); ?>" value="<?php echo $item; ?>" />
+        <input type="text" name="ccc_offers[]" class="widefat" placeholder="<?php _e('Agregue aqui el elemento', 'custom-client-control'); ?>" value="<?php echo $item; ?>" />
+    </div>
+    <?php } ?>
+    <?php } ?>
+</div>
+<button id="button_cloner_offers" class="button button-secondary button-large">+ <?php _e('Agregar más elementos', 'custom-client-control'); ?></button>
+<hr>
+<div class="element-container">
+    <h3><?php _e('Elementos del Presupuesto'); ?></h3>
+    <?php if ($elementos == NULL) { ?>
+    <div class="element-item">
+        <input type="text" name="ccc_elementos[]" class="widefat" value="" placeholder="<?php _e('Agregue aqui el elemento', 'custom-client-control'); ?>" />
+    </div>
+    <?php } else {  ?>
+    <?php foreach ($elementos as $item) { ?>
+    <div class="element-item">
+        <input type="text" name="ccc_elementos[]" class="widefat" placeholder="<?php _e('Agregue aqui el elemento', 'custom-client-control'); ?>" value="<?php echo $item; ?>" />
     </div>
     <?php } ?>
     <?php } ?>
@@ -348,21 +370,21 @@ class Custom_Client_Control_Admin {
 <button id="button_cloner" class="button button-secondary button-large">+ <?php _e('Agregar más elementos', 'custom-client-control'); ?></button>
 <hr>
 <div class="price-container">
-    <h3><?php _e('Agregue Precios'); ?></h3>
-    <input type="number" min="1" step="any" name="precio_bolivares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Bolívares', 'custom-client-control'); ?>" value="<?php echo $precio_bolivares; ?>" />
-    <input type="number" min="1" step="any" name="precio_dolares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Dólares', 'custom-client-control'); ?>" value="<?php echo $precio_dolares; ?>" />
+    <h3><?php _e('Precios'); ?></h3>
+    <input type="number" min="1" step="any" name="ccc_precio_bolivares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Bolívares', 'custom-client-control'); ?>" value="<?php echo $precio_bolivares; ?>" />
+    <input type="number" min="1" step="any" name="ccc_precio_dolares" class="widefat" placeholder="<?php _e('Agregue aqui el precio en Dólares', 'custom-client-control'); ?>" value="<?php echo $precio_dolares; ?>" />
 </div>
 <div class="time-container">
-    <h3><?php _e('Agregue Tiempos'); ?></h3>
-    <input type="text" name="tiempo_entrega" class="widefat" placeholder="<?php _e('Agregue aqui el tiempo de entrega', 'custom-client-control'); ?>" value="<?php echo $tiempo_entrega; ?>" />
+    <h3><?php _e('Tiempos'); ?></h3>
+    <input type="text" name="ccc_tiempo_entrega" class="widefat" placeholder="<?php _e('Agregue aqui el tiempo de entrega', 'custom-client-control'); ?>" value="<?php echo $tiempo_entrega; ?>" />
 </div>
 <?php
 
     }
 
     public function custom_save_meta_box( $post_id ) {
-        $nonce_name   = isset( $_POST['custom_nonce'] ) ? $_POST['custom_nonce'] : '';
-        $nonce_action = 'custom_nonce_action';
+        $nonce_name   = isset( $_POST['ccc_presupuestos_nonce'] ) ? $_POST['ccc_presupuestos_nonce'] : '';
+        $nonce_action = 'ccc_presupuestos_nonce_action';
 
         // Check if nonce is valid.
         if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
@@ -374,17 +396,13 @@ class Custom_Client_Control_Admin {
             return;
         }
 
-        update_post_meta($post_id, "elementos", $_POST["elemento"]);
-
-        update_post_meta($post_id, 'currency', $_POST['currency']);
-
-        update_post_meta($post_id, 'precio_bolivares', $_POST['precio_bolivares']);
-
-        update_post_meta($post_id, 'precio_dolares', $_POST['precio_dolares']);
-
-        update_post_meta($post_id, 'tiempo_entrega', $_POST['tiempo_entrega']);
-
-
+        update_post_meta($post_id, "ccc_nombre_cliente", $_POST["ccc_nombre_cliente"]);
+        update_post_meta($post_id, "ccc_offers", $_POST["ccc_offers"]);
+        update_post_meta($post_id, "ccc_elementos", $_POST["ccc_elementos"]);
+        update_post_meta($post_id, 'ccc_currency', $_POST['ccc_currency']);
+        update_post_meta($post_id, 'ccc_precio_bolivares', $_POST['ccc_precio_bolivares']);
+        update_post_meta($post_id, 'ccc_precio_dolares', $_POST['ccc_precio_dolares']);
+        update_post_meta($post_id, 'ccc_tiempo_entrega', $_POST['ccc_tiempo_entrega']);
     }
 
 }
