@@ -12,7 +12,8 @@
             <img src="<?php echo plugins_url('/logo-white.png', __FILE__);?>" alt="" class="img-center img-logo">
             <div class="main-title">
                 <h1>Presupuesto Web</h1>
-                <h5>Julio 2019</h5>
+                <?php setlocale(LC_ALL, 'es_ES.UTF8'); ?>
+                <h5><?php echo strftime("%#B %Y");?></h5>
             </div>
         </div>
     </div>
